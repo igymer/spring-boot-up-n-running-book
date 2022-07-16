@@ -1,24 +1,23 @@
 package com.igymer.sboot;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.Instant;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@RedisHash
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Aircraft {
 
   @Id
   private Long id;
   private String callsign, squawk, reg, flightno, route, type, category;
+
   private int altitude, heading, speed;
   @JsonProperty("vert_rate")
   private int vertRate;
