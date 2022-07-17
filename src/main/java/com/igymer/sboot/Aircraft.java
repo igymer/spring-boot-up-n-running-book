@@ -2,13 +2,13 @@ package com.igymer.sboot;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.Instant;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,15 +23,18 @@ public class Aircraft {
   private int vertRate;
   @JsonProperty("selected_altitude")
   private int selectedAltitude;
+
   private double lat, lon, barometer;
   @JsonProperty("polar_distance")
   private double polarDistance;
   @JsonProperty("polar_bearing")
   private double polarBearing;
+
   @JsonProperty("is_adsb")
   private boolean isADSB;
   @JsonProperty("is_on_ground")
   private boolean isOnGround;
+
   @JsonProperty("last_seen_time")
   private Instant lastSeenTime;
   @JsonProperty("pos_update_time")

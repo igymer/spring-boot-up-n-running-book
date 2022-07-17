@@ -1,11 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Position Report</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<div class="positionList" th:unless="${#lists.isEmpty(currentPositions)}">
+<script type="text/javascript">
+  window.onload = setupRefresh;
+
+  function setupRefresh() {
+    setTimeout("refreshPage();", 5000); // refresh rate in milliseconds
+  }
+
+  function refreshPage() {
+    window.location = location.href;
+  }
+</script>
+<div class="positionlist" th:unless="${#lists.isEmpty(currentPositions)}">
 
   <h2>Current Aircraft Positions</h2>
 
@@ -25,6 +36,7 @@
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Last Seen</th>
+      <th></th>
     </tr>
     </thead>
     <tbody>
@@ -46,16 +58,5 @@
     </tbody>
   </table>
 </div>
-
-<script type="text/javascript">
-  window.onload = setupRefresh;
-
-  function setupRefresh() {
-    setTimeout("refreshPage();", 5000);
-  }
-
-  function refreshPage() {
-    window.location = location.href;
-  }
-</script>
 </body>
+</html>
